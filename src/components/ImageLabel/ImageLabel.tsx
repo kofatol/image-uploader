@@ -13,9 +13,9 @@ export default function ImageLabel({style}: ImageLabelProps) {
   const [isTouched, setIsTouched] = useState(false);
   const [isInputEmpty, setIsInputEmpty] = useState(false);
 
-  const onInputChange = ({target: {value}}: React.ChangeEvent<HTMLInputElement>): void => setInputValue(value);
+  const onInputChange = ({target: {value}}: React.ChangeEvent<HTMLInputElement>) => setInputValue(value);
 
-  const onInputEnd = (): void => {
+  const onInputEnd = () => {
     setIsTouched(true);
     !inputValue && setIsInputEmpty(true);
   };
