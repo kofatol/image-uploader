@@ -1,4 +1,4 @@
-import './ImageLabelInput.scss';
+import './ImageLabel.scss';
 import React, { useState } from 'react';
 
 type ImageLabelProps = {
