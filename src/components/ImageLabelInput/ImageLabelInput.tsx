@@ -1,3 +1,4 @@
+import './ImageLabelInput.scss';
 import React, { useState } from 'react';
 
 type ImageLabelProps = {
@@ -12,7 +13,7 @@ export default function ImageLabel({style}: ImageLabelProps) {
   const [isTouched, setIsTouched] = useState(false);
   const [isInputEmpty, setIsInputEmpty] = useState(false);
 
-  const onInputChange = ({target: {value}}: React.ChangeEvent<HTMLInputElement>) => setInputValue(value);
+  const onInputChange = ({target: {value}}: React.ChangeEvent<HTMLInputElement>): void => setInputValue(value);
 
   const onInputEnd = (): void => {
     setIsTouched(true);
