@@ -10,13 +10,8 @@
     position: absolute;
     background-color: transparent;
 
-    :focus {
-      border: none;
+    &:focus-visible {
+      outline: none;
     }
-    //
-    //:disabled {
-    //  border: none;
-    //  background-color: transparent;
-    //}
   }
 }
