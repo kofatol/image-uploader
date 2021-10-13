@@ -1,0 +1,22 @@
+.ImageLabel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+
+  &__input {
+    color: red;
+    border: none;
+    position: absolute;
+    background-color: transparent;
+
+    :focus {
+      border: none;
+    }
+    //
+    //:disabled {
+    //  border: none;
+    //  background-color: transparent;
+    //}
+  }
+}
