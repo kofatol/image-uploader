@@ -1,10 +1,24 @@
 import './App.scss';
 import { getImageSrc } from './App.model';
+import ImageLabel from './components/ImageLabel';
 import React, { ChangeEvent, useState } from 'react';
 
-function App() {
-  const initState = {name: '', src: ''};
-  const [imageState, setImageState] = useState(initState);
+type labelInfo = {
+  id: string;
+  style: {
+    top: number;
+    left: number;
+  };
+}
+
+type imageState = {
+  name: string;
+  src: string;
+}
+
+export default function App() {
+  const [imageState, setImageState] = useState<imageState>();
+  const [labelsInfo, setLabelsInfo] = useState<labelInfo[]>([]);
 
   const onUploadImageClick = ({currentTarget}: React.MouseEvent<HTMLButtonElement>) => {
     const fileInput = currentTarget.nextElementSibling as HTMLInputElement;
@@ -24,8 +38,41 @@ function App() {
     }
   };
 
+  const onImageClick = (event: React.MouseEvent<HTMLImageElement>) => {
+    const target = event.target as HTMLImageElement;
+    const rect = target.getBoundingClientRect();
+    const generateId = (): string => (Math.random() * 100 * Math.random() * 100).toFixed(3);
+
+    setLabelsInfo((prevState) => {
+      const newComponentConfig = {
+        id: generateId(),
+        style: {
+          top: event.clientY - rect.top,
+          left: event.clientX - rect.left
+        }
+      };
+
+      return [...prevState, newComponentConfig];
+    });
+  };
+
   return (
     <div className='App'>
+      {
+        imageState?.src &&
+        <div className='image-wrapper'>
+          <img
+            src={imageState.src}
+            alt='uploaded'
+            onClick={onImageClick}
+            onError={(error) => console.error(`Something went wrong: ${error}`)}
+          />
+          {
+            !!labelsInfo.length &&
+            labelsInfo.map((label) => <ImageLabel key={label.id} style={label.style}/>)
+          }
+        </div>
+      }
       <div className='img-upload-group'>
         <button
           className='img-upload-group__button'
@@ -45,5 +92,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
