@@ -1,19 +1,19 @@
-import './App.scss';
-import { getImageSrc } from './App.model';
-import React, { ChangeEvent, useState } from 'react';
-import ImageContent from './components/ImageContent';
-
-type imageState = string
+import 'App.scss';
+import { useState } from 'react';
+import { getImageSrc } from 'App.model';
+import ImageContent from 'components/ImageContent';
+import ImageUploader from 'components/ImageUploader';
+import { onFileInputClickEvent, onUploadImageClickEvent } from 'model/types';
 
 export default function App() {
-  const [imageSrc, setImageSrc] = useState<imageState>();
+  const [imageSrc, setImageSrc] = useState("");
 
-  const onUploadImageClick = ({currentTarget}: React.MouseEvent<HTMLButtonElement>) => {
+  const onUploadImageClick = ({currentTarget}: onUploadImageClickEvent) => {
     const fileInput = currentTarget.nextElementSibling as HTMLInputElement;
     fileInput.click();
   };
 
-  const onFileInputClick = async ({target}: ChangeEvent<HTMLInputElement>) => {
+  const onFileInputClick = async ({target}: onFileInputClickEvent) => {
     const file: File = (target.files as FileList)[0];
 
     if (file !== undefined) {
@@ -27,22 +27,13 @@ export default function App() {
       {
         imageSrc && <ImageContent imageSrc={imageSrc}/>
       }
-      <div className='img-upload-group'>
-        <button
-          className='img-upload-group__button'
-          onClick={onUploadImageClick}
-        >
-          Upload image
-        </button>
-        <input
-          type='file'
-          name='image'
-          value=''
-          accept='image/*'
-          className='img-upload-group__input'
-          onChange={onFileInputClick}
+      {
+        !imageSrc &&
+        <ImageUploader
+          onFileInputClick={onFileInputClick}
+          onUploadImageClick={onUploadImageClick}
         />
-      </div>
+      }
     </div>
   );
 }

@@ -1,0 +1,32 @@
+.ImageUploader {
+  &__button {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.76562rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+    color: #fff;
+    background-color: #39f;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid #39f;
+
+    &:hover, &:active {
+      color: #fff;
+      background-color: #0d86ff;
+      border-color: #0080ff;
+    }
+
+    &:focus {
+      color: #fff;
+      background-color: #0d86ff;
+      border-color: #0080ff;
+      box-shadow: 0 0 0 0.2rem rgba(82, 168, 255, 0.5);
+    }
+  }
+
+
+  &__input {
+    display: none;
+  }
+}
