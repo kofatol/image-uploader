@@ -1,9 +1,9 @@
 import 'App.scss';
-import { useImageHandler } from 'hooks';
+import { useImage } from 'hooks';
 import { ImageContent, ImageUploader } from 'components';
 
 export default function App() {
-  const {imageSrc, onUploadImageClick, onFileInputClick} = useImageHandler();
+  const {imageSrc, onUploadImageClick, onFileInputClick} = useImage();
 
   return (
     <div className='App'>

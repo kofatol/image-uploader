@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { getImageSrc } from 'utils';
 import { onFileInputClickEvent, onUploadImageClickEvent } from 'model/types';
 
-const useImageHandler = () => {
+const useImage = () => {
   const [imageSrc, setImageSrc] = useState('');
 
   const onUploadImageClick = ({currentTarget}: onUploadImageClickEvent) => {
@@ -22,4 +22,4 @@ const useImageHandler = () => {
   return {imageSrc, onUploadImageClick, onFileInputClick};
 };
 
-export default useImageHandler;
+export default useImage;
