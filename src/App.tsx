@@ -11,13 +11,10 @@ type labelInfo = {
   };
 }
 
-type imageState = {
-  name: string;
-  src: string;
-}
+type imageState = string
 
 export default function App() {
-  const [imageState, setImageState] = useState<imageState>();
+  const [imageSrc, setImageSrc] = useState<imageState>();
   const [labelsInfo, setLabelsInfo] = useState<labelInfo[]>([]);
 
   const onUploadImageClick = ({currentTarget}: React.MouseEvent<HTMLButtonElement>) => {
@@ -30,11 +27,7 @@ export default function App() {
 
     if (file !== undefined) {
       const imageSrc = await getImageSrc(file) as string;
-
-      setImageState({
-        name: file.name,
-        src: imageSrc
-      });
+      setImageSrc(imageSrc);
     }
   };
 
@@ -59,10 +52,10 @@ export default function App() {
   return (
     <div className='App'>
       {
-        imageState?.src &&
+        imageSrc &&
         <div className='image-wrapper'>
           <img
-            src={imageState.src}
+            src={imageSrc}
             alt='uploaded'
             onClick={onImageClick}
             onError={(error) => console.error(`Something went wrong: ${error}`)}
