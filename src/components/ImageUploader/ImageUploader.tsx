@@ -9,6 +9,7 @@ type ImageUploaderProps = {
 export default function ImageUploader({onUploadImageClick, onFileInputClick}: ImageUploaderProps) {
   return (
     <div className='ImageUploader'>
+      <h3 className='ImageUploader__text'>To upload an image please click on the button below</h3>
       <button
         className='ImageUploader__button'
         onClick={onUploadImageClick}
