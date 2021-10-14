@@ -1,6 +1,6 @@
 import "./ImageContent.scss";
-import ImageLabel from '../ImageLabel';
 import React, { useState } from 'react';
+import { ImageLabel } from 'components';
 
 type labelInfo = {
   id: string;
