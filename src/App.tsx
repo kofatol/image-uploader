@@ -1,5 +1,5 @@
 import 'App.scss';
-import useImageHandler from 'hooks/useImageHandler';
+import { useImageHandler } from 'hooks';
 import { ImageContent, ImageUploader } from 'components';
 
 export default function App() {

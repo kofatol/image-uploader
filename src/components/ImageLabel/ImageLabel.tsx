@@ -1,5 +1,6 @@
+import React from 'react';
 import './ImageLabel.scss';
-import React, { useState } from 'react';
+import { useInput } from 'hooks';
 
 type ImageLabelProps = {
   style: {
@@ -9,16 +10,7 @@ type ImageLabelProps = {
 }
 
 export default function ImageLabel({style}: ImageLabelProps) {
-  const [inputValue, setInputValue] = useState('');
-  const [isTouched, setIsTouched] = useState(false);
-  const [isInputEmpty, setIsInputEmpty] = useState(false);
-
-  const onInputChange = ({target: {value}}: React.ChangeEvent<HTMLInputElement>) => setInputValue(value);
-
-  const onInputEnd = () => {
-    setIsTouched(true);
-    !inputValue && setIsInputEmpty(true);
-  };
+  const {inputValue, isTouched, isInputEmpty, onInputChange, onInputEnd} = useInput();
 
   return (
     isInputEmpty ? null :
