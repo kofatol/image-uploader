@@ -5,15 +5,6 @@
   flex-direction: column;
   height: 100vh;
 
-  .image-wrapper {
-    position: absolute;
-    z-index: 1;
-
-    image {
-      position: relative;
-    }
-  }
-
   .img-upload-group {
     &__button {
       padding: 0.25rem 0.5rem;

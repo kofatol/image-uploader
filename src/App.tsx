@@ -1,21 +1,12 @@
 import './App.scss';
 import { getImageSrc } from './App.model';
-import ImageLabel from './components/ImageLabel';
 import React, { ChangeEvent, useState } from 'react';
-
-type labelInfo = {
-  id: string;
-  style: {
-    top: number;
-    left: number;
-  };
-}
+import ImageContent from './components/ImageContent';
 
 type imageState = string
 
 export default function App() {
   const [imageSrc, setImageSrc] = useState<imageState>();
-  const [labelsInfo, setLabelsInfo] = useState<labelInfo[]>([]);
 
   const onUploadImageClick = ({currentTarget}: React.MouseEvent<HTMLButtonElement>) => {
     const fileInput = currentTarget.nextElementSibling as HTMLInputElement;
@@ -31,40 +22,10 @@ export default function App() {
     }
   };
 
-  const onImageClick = (event: React.MouseEvent<HTMLImageElement>) => {
-    const target = event.target as HTMLImageElement;
-    const rect = target.getBoundingClientRect();
-    const generateId = (): string => (Math.random() * 100 * Math.random() * 100).toFixed(3);
-
-    setLabelsInfo((prevState) => {
-      const newComponentConfig = {
-        id: generateId(),
-        style: {
-          top: event.clientY - rect.top,
-          left: event.clientX - rect.left
-        }
-      };
-
-      return [...prevState, newComponentConfig];
-    });
-  };
-
   return (
     <div className='App'>
       {
-        imageSrc &&
-        <div className='image-wrapper'>
-          <img
-            src={imageSrc}
-            alt='uploaded'
-            onClick={onImageClick}
-            onError={(error) => console.error(`Something went wrong: ${error}`)}
-          />
-          {
-            !!labelsInfo.length &&
-            labelsInfo.map((label) => <ImageLabel key={label.id} style={label.style}/>)
-          }
-        </div>
+        imageSrc && <ImageContent imageSrc={imageSrc}/>
       }
       <div className='img-upload-group'>
         <button
