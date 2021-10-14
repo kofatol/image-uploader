@@ -1,4 +1,5 @@
-import "./ImageContent.scss";
+import './ImageContent.scss';
+import { generateId } from 'utils';
 import React, { useState } from 'react';
 import { ImageLabel } from 'components';
 
@@ -18,7 +19,6 @@ export default function ImageContent({imageSrc}: ImageContentProps) {
   const onImageClick = (event: React.MouseEvent<HTMLImageElement>) => {
     const target = event.target as HTMLImageElement;
     const rect = target.getBoundingClientRect();
-    const generateId = (): string => (Math.random() * 100 * Math.random() * 100).toFixed(3);
 
     setLabelsInfo((prevState) => {
       const newComponentConfig = {
@@ -47,5 +47,5 @@ export default function ImageContent({imageSrc}: ImageContentProps) {
         labelsInfo.map((label) => <ImageLabel key={label.id} style={label.style}/>)
       }
     </div>
-  )
+  );
 }

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { getImageSrc } from 'App.model';
-import { onFileInputClickEvent, onUploadImageClickEvent } from '../model/types';
+import { getImageSrc } from 'utils';
+import { onFileInputClickEvent, onUploadImageClickEvent } from 'model/types';
 
 const useImageHandler = () => {
   const [imageSrc, setImageSrc] = useState('');

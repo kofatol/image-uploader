@@ -12,4 +12,6 @@ export const getImageSrc = (file: File) => {
       reject(error);
     };
   });
-}
+};
+
+export const generateId = (): string => (Math.random() * 100 * Math.random() * 100).toFixed(3);
