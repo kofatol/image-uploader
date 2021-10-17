@@ -10,7 +10,6 @@ export default function ImageContent({imageSrc}: ImageContentProps) {
   return (
     <div className='ImageContent' ref={imgWrapperRef}>
       <img
-        id='uploaded-image'
         src={imageSrc}
         alt='uploaded'
         onClick={onImageClick}
