@@ -1,3 +1,10 @@
 .ImageContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
+
+  &__image {
+    max-width: 100%;
+  }
 }
