@@ -17,13 +17,13 @@ const useLabelsInfo = () => {
     const relativeY = (event.clientY - imgY) / imgHeight;
 
     setLabelsInfo((prevState) => {
-      const newComponentConfig = {
+      const newLabelInfo = {
         id: generateId(),
         relativeX,
         relativeY
       };
 
-      return [...prevState, newComponentConfig];
+      return [...prevState, newLabelInfo];
     });
   };
 
