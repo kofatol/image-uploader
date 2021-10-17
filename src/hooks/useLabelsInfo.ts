@@ -1,35 +1,33 @@
 import { generateId } from 'utils';
 import React, { useState } from 'react';
+import { useImageDimensions } from './index';
 
-type labelInfo = {
+type LabelInfo = {
   id: string;
-  style: {
-    top: number;
-    left: number;
-  };
+  relativeX: number;
+  relativeY: number;
 }
 
 const useLabelsInfo = () => {
-  const [labelsInfo, setLabelsInfo] = useState<labelInfo[]>([]);
+  const [labelsInfo, setLabelsInfo] = useState<LabelInfo[]>([]);
+  const {imgWrapperRef, imgHeight, imgWidth, imgX, imgY} = useImageDimensions();
 
   const onImageClick = (event: React.MouseEvent<HTMLImageElement>) => {
-    const target = event.target as HTMLImageElement;
-    const rect = target.getBoundingClientRect();
+    const relativeX = (event.clientX - imgX) / imgWidth;
+    const relativeY = (event.clientY - imgY) / imgHeight;
 
     setLabelsInfo((prevState) => {
       const newComponentConfig = {
         id: generateId(),
-        style: {
-          top: event.clientY - rect.top,
-          left: event.clientX - rect.left
-        }
+        relativeX,
+        relativeY
       };
 
       return [...prevState, newComponentConfig];
     });
   };
 
-  return {labelsInfo, onImageClick};
+  return {labelsInfo, onImageClick, imgWrapperRef, imgHeight, imgWidth};
 };
 
 export default useLabelsInfo;
