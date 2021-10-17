@@ -42,8 +42,6 @@ ij_html_space_inside_empty_tag = false
 ij_html_text_wrap = normal
 
 [*.css]
-indent_size = 4
-tab_width = 4
 ij_css_align_closing_brace_with_properties = false
 ij_css_blank_lines_around_nested_selector = 1
 ij_css_blank_lines_between_blocks = 1
