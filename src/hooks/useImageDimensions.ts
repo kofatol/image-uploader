@@ -20,7 +20,7 @@ const useImageDimensions = () => {
     window.addEventListener('resize', updateImageDimensions);
 
     return () => window.removeEventListener('resize', updateImageDimensions);
-  }, [window.innerWidth, window.innerHeight, updateImageDimensions]);
+  }, [updateImageDimensions]);
 
   return {
     imgWrapperRef,
