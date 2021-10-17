@@ -5,12 +5,7 @@
 
   &__input {
     color: red;
-    border: none;
     position: absolute;
     background-color: transparent;
-
-    &:focus-visible {
-      outline: none;
-    }
   }
 }
